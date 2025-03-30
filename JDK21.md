@@ -6,12 +6,12 @@ tags: [jdk]
 # 占有率
 先看一下当前各版本占有率情况([from jrebel sample](https://www.jrebel.com/success/resources/2024-Java-developer-productivity-report)，2024年)：
 <p align = "left">
-<img  src="https://oss-ata.alibaba.com/article/2024/07/daf49687-876b-4fa4-82be-9178ea26befb.png" width="50%" />
+<img src="https://oss-ata.alibaba.com/article/2024/07/daf49687-876b-4fa4-82be-9178ea26befb.png" width="50%" />
 </p>
 
 对比地，2023年：
 <p align = "left">
-<img  src="https://oss-ata.alibaba.com/article/2024/07/8cd802ad-f39e-403e-81fc-178a20e37be1.png" width="50%" />
+<img src="https://oss-ata.alibaba.com/article/2024/07/8cd802ad-f39e-403e-81fc-178a20e37be1.png" width="50%" />
 </p>
 可见高版本的占有率正在快速升高。
 可是，正如IPv6的处境类似，在探讨IPv6的普及为什么变成了现在这样一个长久拖沓的事情时，一个普遍的观点是：缺乏核心场景，即目前并没有一个爆发性的应用场景是IPv6应付得了但IPv4无法应对的——那何必花这冤枉钱和精力呢？
@@ -76,8 +76,11 @@ private List<ItemInfoDTO> batchQuery(Collection<Long> itemIds) {
 首先是代码组织形式的变化，虚拟线程不需要“小心谨慎”地设定几个核心参数并维护一个池化的线程池，需要的时候直接新建一个虚拟线程扔给执行器即可，即便8C16G的生产环境机器，也可以轻松撑起数万个虚拟线程。甚至在多数场景连虚拟线程的数量都不需要考虑——当然极端场景是否会有激凸流量导致虚拟线程数异常大还是要考虑的。
 性能和资源占用这里没有做深入对比，性能方面仅从接口层面对比了同时期一段时间内的调用，RT变化不大。以下是几个相关的虚拟线程实践或性能对比分析：
 [Benchmark JDBC connectors and Java 21 virtual threads](https://mariadb.com/resources/blog/benchmark-jdbc-connectors-and-java-21-virtual-threads/)
+
 [Virtual Threads Performance in Spring Boot](https://blog.fastthread.io/virtual-threads-performance-in-spring-boot/)
+
 [Optimizing Java Performance With Virtual Threads, Reactive Programming, and MongoDB](https://www.mongodb.com/developer/languages/java/virtual-threads-reactive-programming/)
+
 [Performance of Java virtual threads compared to native threads](https://www.reddit.com/r/java/comments/199wsil/performance_of_java_virtual_threads_compared_to/)
 
 # 分代ZGC

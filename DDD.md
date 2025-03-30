@@ -7,7 +7,7 @@ tags: [DDD]
 闲话少叙，先把沉淀的DDD工程架构实践讲清楚。
 ## 基础模型规范
 <p align = "left">
-<img  src="https://oss-ata.alibaba.com/article/2025/03/3eea43d5-1cd2-4f13-9864-da8444eb76d4.png" width="50%" />
+<img src="https://oss-ata.alibaba.com/article/2025/03/3eea43d5-1cd2-4f13-9864-da8444eb76d4.png" width="50%" />
 </p>
 
 每一层定义相应接口和基类，目的是规范代码：
@@ -30,12 +30,12 @@ tags: [DDD]
 ## 工程结构
 典型的Java工程结构如下：
 <p align = "left">
-<img  src="https://oss-ata.alibaba.com/article/2025/03/71a37900-ef75-4e05-83e2-a1149d0a6044.png" width="50%" />
+<img src="https://oss-ata.alibaba.com/article/2025/03/71a37900-ef75-4e05-83e2-a1149d0a6044.png" width="50%" />
 </p>
 
 依赖关系如下：
 <p align = "left">
-<img  src="https://oss-ata.alibaba.com/article/2023/11/6dbf282c-5aff-4aa2-a7d4-7901ead1d443.png" width="60%" />
+<img src="https://oss-ata.alibaba.com/article/2023/11/6dbf282c-5aff-4aa2-a7d4-7901ead1d443.png" width="60%" />
 </p>
 
 其中adapter模块主要用于处理不同来源的请求，如HTTP、RPC、MQ等入口，infra模块主要用于封装DB读写、二方&三方服务等，model模块定义一些出入参，client模块用于对外接口/服务，必要时可增加sdk模块。重点是domain模块和app模块的内容。
@@ -202,7 +202,7 @@ ok，略去商业目标，一个粗粒度的MRD就描述完了，这里先不引
 至此，一个简单的模块化需求拆分就完成了，划分出4个子域，以及各自的核心能力。这个过程不一定是产品与业务的沟通过程，开发同样可以直接参与其中，各方收起各自的专业术语，让大家在业务概念和关键行为上达成一致，即所谓统一语言，说白了就是，业务、产品、开发一致认为这个东西应该怎样运转。
 
 <p align = "left">
-<img  src="img//domain-a.png" width="50%" />
+<img src="img//domain-a.png" width="50%" />
 </p>
 
 # 技术选型
@@ -210,7 +210,7 @@ ok，略去商业目标，一个粗粒度的MRD就描述完了，这里先不引
 到这里，下一步可以直接是编程实现，基于以上拆分定义好核心接口，然后把工作量拆给4个人干完全没有问题。似乎并不需要所谓的DDD或者别的概念，反而有可能会因为这些概念间接引入更多的复杂性。出于KISS或奥卡姆剃刀原则，在一些“短平快”的项目上，快速拆分敏捷迭代是常态，也是优选项。下面以“跟价计划审批通过，开始下发跟价任务”这个具体用例，来用伪代码描述一下采用三层结构(MVC框架)实现的大致情况。
 
 <p align = "left">
-<img  src="img//mvc.jpg" width="50%" />
+<img src="img//mvc.jpg" width="50%" />
 
 ```java
 public class PlanApprovedEventService {
@@ -334,7 +334,7 @@ MVC非常适合MVP阶段，通过敏捷开发快速拉起一个可用于验证�
 组内TL有一套自己的落地方案，实操在一定程度上可行，以过往项目举例，结构如下：
 
 <p align = "left">
-<img  src="img//sp.png" width="50%" />
+<img src="img//sp.png" width="50%" />
 </p>
 
 * client: 对外接口(hsf、mtop、网关等)，仅包含interface；
